@@ -1,6 +1,6 @@
 let player;
 
-// Memuat YouTube IFrame API
+// Menggunakan script loader agar YouTube API siap tepat waktu
 const tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -8,13 +8,17 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtube-player', {
-        linkVideo: 'https://youtu.be/aKtb7Y3qOck?si=qmPL5dQ416lvcRtw', 
+        videoId: '2P9CVWVZtiR_s8z-', // ID video kamu
         playerVars: { 
             'autoplay': 1, 
-            'mute': 1, // Harus mute agar autoplay diizinkan browser
+            'mute': 1, 
             'loop': 1, 
-            'playlist': 'https://youtu.be/aKtb7Y3qOck?si=qmPL5dQ416lvcRtw', 
-            'origin': window.location.origin 
+            'playlist': '2P9CVWVZtiR_s8z-', // Kunci ke video ID yang sama agar tidak pindah
+            'controls': 0, 
+            'showinfo': 0, 
+            'rel': 0, // Mencegah video rekomendasi muncul
+            'modestbranding': 1, // Menghilangkan logo YouTube
+            'origin': window.location.origin
         }
     });
 }
@@ -22,29 +26,15 @@ function onYouTubeIframeAPIReady() {
 document.addEventListener("DOMContentLoaded", function() {
     const btn = document.getElementById('btnJelajahi');
     const welcome = document.getElementById('welcome-container');
-    const iframe = document.getElementById('mainFrame');
 
     btn.addEventListener('click', function() {
-        // Buka gerbang
         welcome.classList.add('open');
-        iframe.src = "home_content.html";
         
-        // Aktifkan suara
+        // Membuka suara hanya setelah interaksi user
         if (player && typeof player.unMute === 'function') {
-            player.seekTo(0);
             player.unMute();
             player.setVolume(100);
             player.playVideo();
-        }
-        
-        window.history.pushState({page: 'home'}, '', '');
-    });
-
-    window.addEventListener('popstate', function() {
-        welcome.classList.remove('open');
-        if (player && typeof player.mute === 'function') {
-            player.mute();
-            player.pauseVideo();
         }
     });
 });
