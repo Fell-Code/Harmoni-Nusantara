@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Heritage of Indonesia - Felix Nicholas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #d4af37;
+            --soft-cyan: #a5f3fc;
+            --deep-bg: #020617;
+            --glass-white: rgba(255, 255, 255, 0.03);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--deep-bg);
+            color: #e2e8f0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .judul {
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(2,6,23,0.3), var(--deep-bg)), 
+            url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=100');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .judul h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 10vw, 5.5rem);
+            letter-spacing: 12px;
+            color: #fff;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .judul p {
+            font-size: 1rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 300;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            display: inline-block;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gold);
+        }
+
+        .dest-row {
+            display: flex;
+            flex-direction: column;
+            gap: 150px; 
+        }
+
+        .dest-item {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .dest-item:nth-child(even) {
+            grid-template-columns: 0.8fr 1.2fr;
+        }
+        .dest-item:nth-child(even) .img-side { order: 2; }
+
+        .img-side {
+            overflow: hidden; /* Pengaman agar gambar tidak meluber keluar saat zoom */
+        }
+
+        .img-side img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(20%);
+            transition: 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .dest-item:hover .img-side img { transform: scale(1.05); filter: grayscale(0%); }
+
+        .text-side { padding: 20px; }
+        .text-side h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+
+        .text-side p {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: #94a3b8;
+            text-align: justify;
+            font-weight: 300;
+        }
+
+        .text-side .highlight {
+            color: var(--gold);
+            font-weight: 600;
+            display: block;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            opacity: 0.4;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media (max-width: 968px) {
+            .dest-item { grid-template-columns: 1fr !important; gap: 30px; }
+            .img-side img { height: 350px; }
+            .judul h1 { font-size: 3rem; }
+        }
+
+        .btn-nav-luxury {
+            display: inline-block;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #f0c34d;
+            border: 1px solid #b8860b;
+            background: rgba(184, 134, 11, 0.15);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 0 15px rgba(184, 134, 11, 0.4);
+        }
+
+        .btn-nav-luxury:hover {
+            background: #f0c34d;
+            color: #050505;
+            box-shadow: 0 0 50px rgba(184, 134, 11, 0.9);
+            transform: translateY(-5px);
+        }
+
+        .btn-home-pos {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 12px 25px;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            z-index: 999;
+        }
+
+        .final-journey-container {
+            text-align: center;
+            margin: 120px 0;
+        }
+
+        .btn-final {
+            padding: 25px 70px; 
+            font-size: 1.1rem;
+            letter-spacing: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOMBOL FIX KEMBALI MENU UTAMA -->
+    <a href="home_content.html" class="btn-nav-luxury btn-home-pos" target="main_frame">BACK TO HOME</a>
+
+    <!-- JUMBOTRON / JUDUL ATAS -->
+    <section class="judul">
+        <p>A Curated Collection of</p>
+        <h1>NUSANTARA</h1>
+        <p>Natural Wonders & Human Legacies</p>
+    </section>
+
+    <!-- KONTEN UTAMA -->
+    <div class="container">
+        
+        <!-- KATEGORI 1: ALAM -->
+        <div class="section-header">
+            <h2>Mahakarya Alam</h2>
+        </div>
+
+        <div class="dest-row">
+            <article class="dest-item">
+                <div class="img-side"><img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?auto=format&fit=crop&w=1200" alt="Raja Ampat"></div>
+                <div class="text-side">
+                    <h3>Raja Ampat</h3>
+                    <p>
+                        Tersembunyi di ujung timur Indonesia, Raja Ampat berdiri sebagai benteng terakhir biodiversitas laut dunia. Gugusan pulau-pulau karst yang menyembul dari lautan biru toska ini menciptakan labirin alami yang memesona. Di bawah permukaannya, terdapat ribuan spesies ikan dan terumbu karang yang hidup dalam harmoni sempurna, menjadikan tempat ini sebagai laboratorium kehidupan laut terkaya di planet bumi. Setiap sudut pemandangannya adalah pengingat akan keajaiban proses geologi jutaan tahun yang tak tersentuh tangan manusia.
+                    </p>
+                    <span class="highlight">THE GLOBAL EPICENTER OF BIODIVERSITY</span>
+                </div>
+            </article>
+
+            <article class="dest-item">
+                <div class="img-side"><img src="https://regalsprings.co.id/wp-content/uploads/2023/05/Danau-Toba.png" alt="Toba"></div>
+                <div class="text-side">
+                    <h3>Danau Toba</h3>
+                    <p>
+                        Danau Toba bukan sekadar badan air yang luas, melainkan monumen hidup dari kekuatan kosmik bumi. Terbentuk dari ledakan supervolcano dahsyat 74.000 tahun silam, kawah raksasa ini kini menawarkan ketenangan yang kontras dengan sejarah kelam pembentukannya. Dengan Pulau Samosir yang megah di tengahnya, Toba menyajikan panorama pegunungan hijau yang dipadukan dengan kabut pagi yang magis. Tempat ini mengajak pengunjung untuk merenungi betapa kecilnya manusia di hadapan kekuatan alam yang luar biasa besar.
+                    </p>
+                    <span class="highlight">THE ANCIENT CALDERA OF SUMATRA</span>
+                </div>
+            </article>
+
+            <article class="dest-item">
+                <div class="img-side"><img src="https://www.yukbanyuwangi.co.id/wp-content/uploads/2024/12/Pemandangan-Kawah-Ijen-di-Banyuwangi-Jawa-Timur-yang-digandrungi-wisatawan.jpg" alt="Ijen"></div>
+                <div class="text-side">
+                    <h3>Kawah Ijen</h3>
+                    <p>
+                        Saat malam menyelimuti Jawa Timur, Kawah Ijen memamerkan pertunjukan cahaya yang tidak ditemukan di belahan bumi manapun kecuali satu tempat lainnya. Api biru yang menari-nari di tengah kegelapan adalah hasil dari oksidasi gas belerang cair yang keluar dari perut bumi. Fenomena ini menciptakan pemandangan surealis yang seolah-olah berasal dari planet lain. Keindahan ini berpadu dengan ketangguhan para penambang belerang, menciptakan narasi tentang keindahan alam yang keras namun luar biasa memukau.
+                    </p>
+                    <span class="highlight">THE RARE BLUE FIRE PHENOMENON</span>
+                </div>
+            </article>
+
+            <article class="dest-item">
+                <div class="img-side"><img src="https://asset.kompas.com/crops/vU5byo_tLt0zKnHydmi40O-L8DA=/5x65:730x548/1200x800/data/photo/2020/05/18/5ec27908adb29.jpg" alt="Komodo"></div>
+                <div class="text-side">
+                    <h3>Pulau Padar</h3>
+                    <p>
+                        Pulau Padar menawarkan salah satu pemandangan paling ikonik di dunia. Dari puncak bukitnya, pengunjung dapat melihat tiga teluk besar dengan karakteristik yang berbeda dalam satu pandangan mata. Keunikan warna pasir yang berkisar dari putih bersih hingga merah muda (pink) menciptakan gradasi yang luar biasa indah melawan jernihnya air laut Flores. Ini adalah tempat di mana waktu seolah berhenti, dan alam menunjukkan kemampuannya dalam melukis lanskap yang sempurna tanpa cela sedikitpun.
+                    </p>
+                    <span class="highlight">THE MAJESTIC TRI-COLOR BAYS</span>
+                </div>
+            </article>
+        </div>
+
+        <!-- KATEGORI 2: MANUSIA -->
+        <div class="section-header" style="margin-top: 150px;">
+            <h2>Mahakarya Manusia</h2>
+        </div>
+
+        <div class="dest-row">
+            <article class="dest-item">
+                <div class="img-side"><img src="https://fatek.umsu.ac.id/wp-content/uploads/2023/06/Candi-Borobudur-Makna-Yang-Terkandung-di-Dalamnya.jpg" alt="Borobudur"></div>
+                <div class="text-side">
+                    <h3>Candi Borobudur</h3>
+                    <p>
+                        Berdiri kokoh sejak abad ke-8, Candi Borobudur adalah manifestasi fisik dari kebijaksanaan dan kecerdasan arsitektur leluhur Nusantara. Tersusun dari dua juta blok batu tanpa setetespun semen, stupa raksasa ini dirancang sebagai peta spiritual bagi pencari kedamaian. Setiap relief yang dipahat dengan sangat detail menceritakan perjalanan hidup manusia menuju pencerahan. Ini adalah bukti nyata bahwa keterbatasan teknologi di masa lalu tidak menghalangi manusia Indonesia untuk menciptakan karya yang abadi bagi peradaban dunia.
+                    </p>
+                    <span class="highlight">THE WORLD'S LARGEST BUDDHIST MONUMENT</span>
+                </div>
+            </article>
+
+            <article class="dest-item">
+                <div class="img-side"><img src="https://www.agoda.com/wp-content/uploads/2020/01/Tabanan-rice-terraces-sunrise-sunset-what-to-do-in-Bali.jpg" alt="Subak"></div>
+                <div class="text-side">
+                    <h3>Terasering Jatiluwih</h3>
+                    <p>
+                        Sawah berundak di Jatiluwih adalah kanvas hijau di mana manusia dan alam bekerja sama menciptakan simfoni kehidupan. Di balik pemandangannya yang tenang, terdapat sistem irigasi Subak yang kompleks—sebuah organisasi sosial tradisional yang mengatur pembagian air secara adil selama berabad-abad. Ini bukan sekadar tentang bercocok tanam, melainkan filosofi hidup Tri Hita Karana yang menjaga hubungan baik antara manusia dengan sesama, alam sekitar, dan Sang Pencipta. Sebuah mahakarya manajemen air yang diakui dunia.
+                    </p>
+                    <span class="highlight">THE HARMONY OF MAN & AGRICULTURE</span>
+                </div>
+            </article>
+
+            <article class="dest-item">
+                <div class="img-side"><img src="https://baliuntold.com/wp-content/uploads/2025/04/GWK-statue-cover.jpg" alt="GWK"></div>
+                <div class="text-side">
+                    <h3>Patung GWK</h3>
+                    <p>
+                        Garuda Wisnu Kencana berdiri sebagai pencapaian seni modern Indonesia yang monumental. Patung tembaga raksasa ini merupakan simbol pelestarian lingkungan dan budaya, menggambarkan Dewa Wisnu yang mengendarai burung Garuda. Membutuhkan waktu puluhan tahun untuk diselesaikan oleh ribuan pengrajin, GWK membuktikan bahwa semangat kreativitas manusia Indonesia terus berkembang melintasi zaman. Struktur megah ini kini menjadi penjaga cakrawala Bali yang menyambut setiap jiwa yang mencari keindahan budaya kontemporer.
+                    </p>
+                    <span class="highlight">A MASTERPIECE OF MODERN SCULPTURE</span>
+                </div>
+            </article>
+
+            <article class="dest-item">
+                <div class="img-side"><img src="https://torch.id/cdn/shop/articles/Artikel_171_-_Preview.webp?v=1713643488" alt="Wae Rebo"></div>
+                <div class="text-side">
+                    <h3>Desa Wae Rebo</h3>
+                    <p>
+                        Terisolasi di balik hutan pegunungan Flores, Desa Wae Rebo adalah bukti ketahanan budaya yang menyentuh awan. Arsitektur rumah Mbaru Niang yang berbentuk kerucut sempurna menunjukkan kecerdasan manusia dalam beradaptasi dengan iklim pegunungan yang ekstrem. Tanpa paku atau beton, rumah-rumah ini menjadi pusat kehidupan komunal yang hangat. Di sini, pengunjung diajak untuk kembali ke akar kesederhanaan, di mana setiap jengkal bangunannya dibangun dengan doa dan rasa hormat yang mendalam kepada leluhur dan alam semesta.
+                    </p>
+                    <span class="highlight">THE ANCIENT VILLAGE ABOVE THE CLOUDS</span>
+                </div>
+            </article>
+        </div>
+
+    </div>
+
+    <!-- HUBUNGAN LANJUT KE HALAMAN BUDAYA -->
+    <div class="final-journey-container">
+        <p style="color: #888; letter-spacing: 5px; font-size: 0.7rem; margin-bottom: 20px; font-family: 'Montserrat', sans-serif;">WARISAN LELUHUR, IDENTITAS KITA</p>
+        <a href="budaya.html" class="btn-nav-luxury btn-final" target="main_frame"> 
+            CONTINUE TO BUDAYA <span style="margin-left: 10px;">→</span>
+        </a>
+    </div>
+
+    <!-- FOOTER RESMI DI TENGAH -->
+    <footer class="footer">
+        <p>INDONESIA LANDSCAPE - NUSANTARA</p>
+    </footer>
+
+</body>
+</html>

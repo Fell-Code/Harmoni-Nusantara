@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Into the Deep: Flora Nusantara</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;600&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --forest-black: #010400;
+            --emerald-glow: #064e3b;
+            --leaf-green: #10b981;
+            --gold-leaf: #d4af37;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--forest-black);
+            color: #e2e8f0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        
+        .judul{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+                        url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1920&q=100');
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+        }
+
+        .judul h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            color: var(--gold-leaf);
+            letter-spacing: 25px;
+            text-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+            animation: pulse 4s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.8; filter: brightness(1); }
+            to { opacity: 1; filter: brightness(1.3); }
+        }
+
+        
+        .btn-nav-luxury {
+        display: inline-block;
+        text-decoration: none;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #f0c34d; 
+        border: 1px solid #b8860b; 
+        background: rgba(184, 134, 11, 0.1);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+        }
+        
+         .btn-nav-luxury:hover {
+        background: #f0c34d;
+        color: #050505;
+        box-shadow: 0 0 40px rgba(184, 134, 11, 0.8); 
+        transform: translateY(-3px);
+         }
+
+         .btn-home-pos {
+        position: fixed;
+        top: 30px;
+        left: 30px;
+        padding: 12px 25px;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        z-index: 999;
+        }
+
+        .next {
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        .next .btn-nav-luxury {
+            padding: 20px 50px;
+            font-size: 1rem;
+            letter-spacing: 5px;
+        }
+
+        
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .table {
+            display: flex;
+            margin-bottom: 200px;
+            align-items: center;
+            opacity: 0.9;
+            transition: 0.8s;
+        }
+
+        .table:nth-child(even) { flex-direction: row-reverse; }
+
+        .image-frame {
+            flex: 1.2;
+            position: relative;
+            padding: 20px;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 700px;
+            object-fit: cover;
+            border-radius: 2px;
+            filter: grayscale(30%) contrast(1.1);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.9);
+            transition: 1s;
+        }
+
+        .table:hover img { filter: grayscale(0%) contrast(1.2); transform: scale(1.02); }
+
+        .content-frame {
+            flex: 0.8;
+            padding: 60px;
+            background: rgba(10, 10, 10, 0.9);
+            margin-left: -100px; /* Overlap effect */
+            z-index: 4;
+            border-top: 3px solid var(--leaf-green);
+        }
+
+        .atasjudul {
+            letter-spacing: 10px; 
+            margin-bottom: 20px; 
+            color: var(--leaf-green);
+        }
+
+       
+        .content-frame h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .content-frame p {
+            font-size: 1.1rem;
+            line-height: 2.2;
+            color: #94a3b8;
+            text-align: justify;
+        }
+
+
+
+        .info {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--gold-leaf);
+            text-transform: uppercase;
+        }
+
+        
+        .footer {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to top, var(--emerald-glow), var(--forest-black));
+        }
+
+        .footer-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            letter-spacing: 20px;
+            color: var(--gold-leaf);
+            text-align: center;
+        }
+
+       
+        .next {
+            text-align: center;
+            margin: 80px 0;
+            padding: 0 20px;
+        }
+
+        
+        .btn-next {
+            display: inline-block;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 5px;
+            font-weight: 700;
+            color: #f0c34d; 
+            border: 1px solid #b8860b; 
+            padding: 20px 50px;
+            background: rgba(184, 134, 11, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-transform: uppercase;
+        }
+
+        .btn-next:hover {
+            background: #f0c34d;
+            color: #050505; 
+            box-shadow: 0 0 40px rgba(184, 134, 11, 0.5);
+            transform: translateY(-5px);
+        }
+
+        
+        footer {
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <a href="Budaya.HTML" class="btn-nav-luxury btn-home-pos" target="main_frame">BACK TO JOURNEY</a>
+
+    <header class="judul">
+        <p div class>DEEP INSIDE THE</p>
+        <h1>FLORA</h1>
+        <p style="font-family: 'Playfair Display', serif; font-style: italic;">"Dimana Akar Berbicara dan Bunga Bercahaya"</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="table">
+            <div class="image-frame">
+                <img src="https://cdn.grid.id/crop/0x0:0x0/700x465/photo/2023/08/09/bunga-anggrek-bulanjpg-20230809123648.jpg" alt="Anggrek Bulan">
+            </div>
+            <div class="content-frame">
+                <div class="info"><span>Puspa Pesona</span> • <span>Elegansi Putih</span></div>
+                <h2>Anggrek Bulan</h2>
+                <p>Ditetapkan sebagai salah satu bunga nasional Indonesia, *Phalaenopsis amabilis* memancarkan keanggunan melalui kelopak putih bersihnya yang menyerupai sayap kupu-kupu. Ia tumbuh menempel pada batang pohon tinggi, menjadi saksi bisu keindahan yang menggantung di antara cahaya matahari yang menembus celah dedaunan hutan.</p>
+            </div>
+        </div>
+
+        <div class="table">
+            <div class="image-frame">
+                <img src="https://cdn.britannica.com/59/195759-050-DE1A4EE3/Titan-arum-bloom-Washington-DC-United-States.jpg" alt="Titan Arum">
+            </div>
+            <div class="content-frame">
+                <div class="info"><span>Raksasa Tertinggi</span> • <span>Langka</span></div>
+                <h2>Titan Arum</h2>
+                <p>Berbeda dengan Rafflesia, *Amorphophallus titanum* menjulang tinggi ke angkasa. Fenomena mekarnya adalah peristiwa botani paling dramatis di dunia. Ia mengeluarkan aroma kuat untuk menarik polinator di tengah lebatnya hutan tropis, melambangkan kekuatan alam yang megah namun tak terduga.</p>
+            </div>
+        </div>
+
+        <div class="table">
+            <div class="image-frame">
+                <img src="https://flooringdeckingbali.wordpress.com/wp-content/uploads/2019/04/kayu-cendana.jpg" alt="Cendana">
+            </div>
+            <div class="content-frame">
+                <div class="info"><span>Emas Hijau</span> • <span>Wangi Abadi</span></div>
+                <h2>Kayu Cendana</h2>
+                <p>Tumbuhan legendaris dari wilayah NTT ini adalah harta karun aromatik Nusantara. Wanginya yang menenangkan telah melintasi samudera selama berabad-abad. Cendana mengajarkan kita bahwa kemewahan sejati seringkali tersimpan dalam serat yang paling dalam, bertahan lama melewati putaran waktu.</p>
+            </div>
+        </div>
+
+        <div class="table">
+            <div class="image-frame">
+                <img src="https://royalole2.com/wp-content/uploads/2025/11/image-53.png" alt="Anggrek Hitam">
+            </div>
+            <div class="content-frame">
+                <div class="info"><span>Misteri Borneo</span> • <span>Koleksi Elite</span></div>
+                <h2>Anggrek Hitam</h2>
+                <p>Simbol eksotisme Borneo yang memiliki lidah hitam legam yang dramatis. *Coelogyne pandurata* adalah representasi dari sisi gelap namun cantik dari hutan hujan kita. Keberadaannya di mancanegara dianggap sebagai prestise tinggi bagi dunia botani internasional.</p>
+            </div>
+        </div>
+
+        <div class="table">
+            <div class="image-frame">
+                <img src="https://i.pinimg.com/736x/b5/17/3a/b5173acaa511f32234d96d7b8ffde848.jpg" alt="Pohon Damar">
+            </div>
+            <div class="content-frame">
+                <div class="info"><span>Tiang Langit</span> • <span>Getah Berharga</span></div>
+                <h2>Pohon Damar</h2>
+                <p>Menjulang sebagai salah satu kanopi tertinggi di hutan, pohon Damar menghasilkan resin berharga yang telah digunakan manusia sejak zaman kuno. Kekokohannya adalah pilar yang menjaga keseimbangan ekosistem hutan hujan, memberikan perlindungan bagi flora dan fauna di bawahnya.</p>
+            </div>
+        </div>
+
+        <div class="table" style="margin-bottom: 50px;">
+            <div class="image-frame">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bunga_Senduro.JPG" alt="Edelweiss">
+            </div>
+            <div class="content-frame">
+                <div class="info"><span>Bunga Abadi</span> • <span>Puncak Gunung</span></div>
+                <h2>Edelweiss Jawa</h2>
+                <p>*Anaphalis javanica* hanya tumbuh di puncak-puncak gunung tertinggi Indonesia. Dikenal sebagai bunga abadi karena hormon etilennya yang mencegah gugurnya kelopak bunga. Ia melambangkan keteguhan hati dan cinta yang tak lekang oleh waktu, bertahan di cuaca ekstrem demi keindahan yang hakiki.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="next">
+    <a href="fauna.html" target="main_frame" class="btn-next">
+        JELAJAHI FAUNA NUSANTARA <span style="margin-left: 15px;">→</span>
+    </a>
+</div>
+    <footer class="footer">
+        <h2 class="footer-title">LESTARI ALAMKU</h2>
+        <p style="margin-top: 40px; opacity: 0.5; letter-spacing: 5px;">FELIX NICHOLAS • BOTANICAL EXPEDITION • 2026</p>
+    </footer>
+
+</body>
+</html>

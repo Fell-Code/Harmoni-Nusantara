@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Majesty of Nusantara - Felix Nicholas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+    
+    <style>
+    :root {
+        --gold-bright: #f8b306;
+        --gold-dark: #ffcd05;
+        --glass-premium: rgba(15, 15, 15, 0.9);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background-color: var(--deep-void);
+        background-image: linear-gradient(rgba(5, 5, 5, 0.96), rgba(5, 5, 5, 0.96)), 
+        url('https://kelompokgwk.wordpress.com/wp-content/uploads/2017/08/batik-texture-background.jpg');
+        background-attachment: fixed;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        scrollbar-width: thin;
+        scrollbar-color: var(--gold-dark) var(--deep-void);
+    }
+
+    
+    .judul{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-bottom: 1px solid var(--gold-dark);
+        background: radial-gradient(circle at center, rgba(184, 134, 11, 0.1) 0%, transparent 70%);
+    }
+
+    .judul h1 {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(3rem, 12vw, 6rem);
+        letter-spacing: 20px;
+        color: var(--gold-bright);
+        background: linear-gradient(to bottom, #fff7d6 0%, var(--gold-bright) 50%, var(--gold-dark) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
+    }
+
+    .judul p {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 1.5rem;
+        letter-spacing: 8px;
+        color: #fff;
+        opacity: 0.6;
+        margin-top: -10px;
+    }
+
+   
+    .wrapper-header {
+        position: relative;
+        margin-bottom: 80px;
+        text-align: center;
+    }
+
+    .wrapper-header h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 2rem;
+        color: var(--gold-bright);
+        letter-spacing: 10px;
+        display: inline-block;
+        padding: 0 40px;
+    }
+
+    
+    .wrapper-header::before, .wrapper-header::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 30%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--gold-bright), transparent);
+        box-shadow: 0 0 10px var(--gold-dark);
+    }
+    .wrapper-header::before { left: 0; }
+    .wrapper-header::after { right: 0; }
+
+    
+
+    .cultural-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        background: var(--glass-premium);
+        padding: 60px;
+        border: 1px solid rgba(184, 134, 11, 0.15);
+        backdrop-filter: blur(20px);
+        margin-bottom: 120px;
+        transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        position: relative;
+    }
+
+    .cultural-item:hover {
+        border-color: var(--gold-bright);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 20px rgba(184, 134, 11, 0.1);
+        transform: scale(1.02);
+    }
+
+    .cultural-item::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 40px; height: 40px;
+        border-top: 2px solid var(--gold-bright);
+        border-left: 2px solid var(--gold-bright);
+    }
+
+
+    
+    .img-box {
+        position: relative;
+        padding: 15px;
+        border: 1px solid rgba(184, 134, 11, 0.3);
+    }
+
+    .img-box img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        filter: contrast(1.1) brightness(0.8);
+        transition: 1.5s;
+    }
+
+  
+    .isi h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: #fff;
+        border-bottom: 1px solid var(--gold-dark);
+        padding-bottom: 10px;
+    }
+
+
+    .filosofi {
+        margin-top: 30px;
+        padding: 25px;
+        border: 1px solid var(--gold-dark);
+        background: rgba(184, 134, 11, 0.05);
+        color: var(--gold-bright);
+        font-style: italic;
+        line-height: 1.6;
+    }
+
+    
+    
+    .footer {
+        text-align: center;
+        padding: 120px 20px;
+        background: linear-gradient(to top, #000, transparent);
+        border-top: 1px solid rgba(212, 175, 55, 0.3);
+        margin-top: 100px;
+        
+        }
+
+    .footer-slogan {
+        font-family: 'Cinzel', serif; 
+        font-size: 2.5rem; 
+        letter-spacing: 15px; 
+        font-weight: 700;
+        background: linear-gradient(to bottom, #fff7d6 0%, #d4af37 50%, #b8860b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 10px rgba(184, 134, 11, 0.4));
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 20px;}
+
+    .footer-sub {
+        font-size: 0.7rem;
+        color: #888;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        }
+
+    
+    
+    .btn-home {
+        position: fixed;
+        top: 30px;
+        left: 30px;
+        z-index: 999; 
+        color: #f0c34d !important; 
+        text-decoration: none;
+        font-family: 'Cinzel', serif;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        font-weight: 700;
+        border: 2px solid #b8860b; 
+        padding: 12px 25px;
+        background: rgba(0, 0, 0, 0.8); 
+        backdrop-filter: blur(10px); 
+        transition: all 0.4s ease;
+        text-transform: uppercase;
+        cursor: pointer;
+        }
+        
+    .btn-home:hover {
+        background: #b8860b;
+        color: #000 !important;
+        box-shadow: 0 0 20px rgba(184, 134, 11, 0.6);
+        transform: translateY(-3px);
+        }
+
+    .btn-next {
+        display: inline-block;
+        text-decoration: none;
+        font-family: 'Cinzel', serif;
+        font-size: 1rem;
+        letter-spacing: 5px;
+        font-weight: 700;
+        color: var(--gold-bright);
+        border: 1px solid var(--gold-dark);
+        padding: 20px 50px;
+        background: rgba(184, 134, 11, 0.05);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+        }
+
+    .btn-next:hover {
+        background: var(--gold-bright);
+        color: var(--deep-void);
+        box-shadow: 0 0 40px rgba(184, 134, 11, 0.5);
+        transform: translateY(-5px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <a href="Pemandangan.HTML" class="btn-home">BACK TO JOURNEY</a>
+
+    <header class="judul">
+        <p>A TRIBUTE TO THE SOUL OF</p>
+        <h1>SENI & BUDAYA </h1>
+        <p>"Meresapi Kedalaman Makna Nusantara"</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="wrapper-header">
+            <h2>CULTURE OF INDONESIA</h2>
+        </div>
+                <article class="cultural-item">
+                <div class="img-box">
+                    <img src="https://tribratanews.polri.go.id/web/image/blog.post/55721/image " alt="Wayang">
+                </div>
+                <div class="isi">
+                    <span>Seni Pertunjukan</span>
+                    <h3>Wayang Kulit</h3>
+                    <p> Mahakarya seni tutur dunia yang memadukan pertunjukan bayangan dengan sastra epik. Wayang bukan sekadar tontonan, melainkan media tuntunan hidup yang telah diakui UNESCO sebagai warisan kemanusiaan.
+                        Dalam kepercayaan dan sastra Jawa, wayang kulit diciptakan oleh Kanjeng Sunan Kalijaga yang merupakan sebagai anggota Wali Songo dan merupakan keturunan Bangsawan Ponorogo, Arya Wiraraja.
+                        Kanjeng Sunan Kalijaga melihat masyarakat Indonesia terutama masyarakat suku Jawa yang menggemari pertunjukan Wayang Beber, dalam Islam melukis di atas kertas dianggap Haram (dilarang), maka dari itu Kanjeng Sunan Kalijaga memodifikasi bahan material dari karakter Wayang yang semula-mula terbuat dari Daluang (kertas Ponoragan) dan diganti menggunakan bahan dasar Kulit sapi, atau kerbau. Selain itu juga, wayang kulit digunakan sebagai syiar agama Islam jalur budaya tradisional. 
+                        Sunan Kalijaga juga menambahkan karakter-karakter baru seperti punakawan yang terdiri atas Semar, Bagong, Petruk, dan Gareng.
+                    </p>
+                    <div class="tablefilosofi">Filosofi: Bayangan yang menari di layar adalah simbol perjalanan jiwa manusia di tengah pertarungan antara kebajikan dan kebatilan.</div>
+                </div>
+            </article>
+
+            <article class="cultural-item">
+                <div class="img-box">
+                    <img src="https://i.pinimg.com/736x/d9/4a/c3/d94ac37d0c0247011611f22336b33489.jpg " alt="Batik">
+                </div>
+                <div class="isi">
+                    <span>Wastra Nusantara</span>
+                    <h3>Batik Adiluhung</h3>
+                    <p>Lukisan di atas kain wastra yang dibuat menggunakan malam dan canting. Setiap motif menyimpan doa, status sosial, dan sejarah panjang masyarakat Nusantara.
+                        Budaya adiluhung merupakan jati diri bangsa yang berdasar sikap cinta bangsa, cinta kesatuan, bahasa, dan dasar dari bu- daya nasional. Fungsi strategi dalam mem- bangun kehidupan bangsa ini tidak boleh hilang.
+                        pendidikan tinggi seni berkarakter budaya adiluhung</p>
+                    <div class="tablefilosofi">Filosofi: Kesabaran dalam setiap goresan canting melambangkan keteguhan hati dan ketelitian dalam menjalani setiap fase kehidupan.</div>
+                </div>
+            </article>
+
+            <article class="cultural-item">
+                <div class="img-box">
+                    <img src="https://travelinkmagz.com/wp-content/uploads/2018/10/DIY_Gamelan-Jawa_1920x1080px_1.jpg" alt="Gamelan">
+                </div>
+                <div class="isi">
+                    <span>Instrumen Musik</span>
+                    <h3>Gamelan Jawi</h3>
+                    <p>Simfoni logam yang menciptakan harmoni ketenangan jiwa. Keunikannya telah menginspirasi banyak musisi klasik dunia dan menjadi identitas suara Nusantara di kancah global.
+                        Gamelan Jawa iku jinis utawa corak gamelan kang urip ing Jawa Tengah (uga Yogyakarta) lan sapérangan Jawa Wétan. 
+                        Musik gamelan Jawa iki béda karo musik gamelan saka laladan liya, yèn musik gamelan Jawa lumrahé nduwé nada luwih lembut lan nganggo laya luwih alon,
+                         béda karo musik gamelan Bali kang layané luwih rikat, 
+                        uga gamelan Sundha kang rasa musiké "nglaras" banget (mendayu-dayu) lan didhominasi swara suling.
+                    </p>
+                    <div class="filosofi">Filosofi: Perbedaan nada pada setiap bilah logam melambangkan Bhinneka Tunggal Ika; harmoni tercipta saat perbedaan saling melengkapi.</div>
+                </div>
+            </article>
+
+            <article class="cultural-item">
+                <div class="img-box">
+                    <img src="https://ik.imagekit.io/tvlk/blog/2025/01/7104981423_5965b87541_b.jpg?tr=q-70,c-at_max,w-1000,h-600" alt="Saman">
+                </div>
+                <div class="isi">
+                    <span>Tradisi Ritual</span>
+                    <h3>Tarian Saman</h3>
+                    <p>Tarian ribuan tangan dari tanah Aceh yang mengandalkan kecepatan, kekompakan, dan sinkronisasi gerakan tubuh yang luar biasa tanpa alat musik tambahan.
+                        Tari Saman adalah tari rakyat dari masyarakat Suku Gayo di Provinsi Aceh, Indonesia. Tarian ini merupakan salah satu media untuk menyampaikan pesan atau dakwah. Tarian ini mencerminkan pendidikan, keagamaan, sopan santun, kepahlawanan, kekompakan, dan kebersamaan.
+                        Sebelum tari Saman dimulai yaitu sebagai mukaddimah atau pembukaan, tampil seorang tua cerdik pandai atau pemuka adat untuk mewakili masyarakat setempat (keketar) atau nasihat-nasihat yang berguna kepada para pemain dan penonton.
+                        Lagu dan syair pengungkapannya secara bersama dan berkesinambungan, pemainnya terdiri dari pria-pria yang masih muda-muda dengan memakai pakaian adat. Penyajian tarian tersebut dapat juga dipentaskan, dipertandingkan antara grup tamu dengan grup sepangkalan (dua grup).
+                        Penilaian dititikberatkan pada kemampuan masing-masing grup dalam mengikuti gerak, tari, dan lagu (syair) yang disajikan oleh pihak lawan.
+                    </p>
+                    <div class="filosofi">Filosofi: Melambangkan persatuan, kedisiplinan, dan keteguhan iman dalam kebersamaan masyarakat religius.</div>
+                </div>
+            </article>
+
+            <article class="cultural-item">
+                <div class="img-box">
+                    <img src="https://sumateraekspres.bacakoran.co/upload/a7a50b3580411cefeebce84290bfe982.jpg" alt="Keris">
+                </div>
+                <div class="isi">
+                    <span>Kriya Logam</span>
+                    <h3>Keris Pusaka</h3>
+                    <p>Bukan sekadar senjata tikam, melainkan simbol kedaulatan, martabat, dan keahlian metalurgi tingkat tinggi yang diwariskan turun-temurun.Keris merupakan senjata tajam golongan belati dari suku Jawa yang memiliki ragam fungsi budaya yang dikenal di kawasan Nusantara bagian barat dan tengah. 
+                       Bentuknya khas dan mudah dibedakan dari senjata tajam lainnya karena tidak simetris di bagian pangkal yang melebar, sering kali bilahnya berkelok-kelok, dan banyak di antaranya memiliki pamor (damascene), yaitu terlihat serat-serat lapisan logat pada helai bilah.</p>
+                    <div class="filosofi">Filosofi: Kedewasaan dan pengendalian diri; senjata yang tajam harus disimpan dalam kerangka kebijaksanaan (sarung keris).</div>
+                </div>
+            </article>
+
+            <article class="cultural-item">
+                <div class="img-box">
+                    <img src="https://storage.googleapis.com/storage-ajaib-prd-platform-wp-artifact/2019/11/rumah-adat-di-Indonesia.jpg" alt="Rumah Gadang">
+                </div>
+                <div class="isi">
+                    <span>Rumah Adat</span>
+                    <h3>Rumah Gadang</h3>
+                    <p>Bangunan tradisional dari Sumatera Barat ini merupakan salah satu bukti histori yang masih dipertahankan di daerah Minangkabau hingga sekarang. Istilah masyarakat setempat dalam membangun rumah adat adalah dengan bentuk atap yang khas atau Rumah Bagonjong dengan kedua ujung atas berbentuk runcing dan di tengahnya melengkung.
+                       Istilah masyarakat setempat dalam membangun rumah adat adalah dengan bentuk atap yang khas atau Rumah Bagonjong dengan kedua ujung atas berbentuk runcing dan di tengahnya melengkung. Bentuknya yang khas menyerupai tanduk kerbau masih banyak ditempati oleh warga setempat.
+                        Rumah adata di Indonesia ini memiliki kesan yang mewah dengan model bangunan yang tinggi. Setidaknya lantainya ditopang dengan tiang setinggi 2 meter. Selain itu, rumah ini hanya memiliki satu tangga kayu saja sebagai pintu masuk.
+                        Keberadaan satu tangga pada rumah adat Padang ini pun memiliki filosofi yang terkait Ketuhanan. Makna dari satu tangga menuju dalam rumah menandakan kepercayaan terhadap Tuhan Yang Maha Esa. Suku Minangkabau memang dikenal sebagai pemeluk agama Islam yang taat sejak dulu.</p>
+                    <div class="filosofi">Filosofi: Keselarasan mikrokosmos (manusia) dan makrokosmos (alam semesta); gerakan pelan adalah bentuk meditasi visual.</div>
+                </div>
+            </article>
+        </div>
+
+    </div>
+
+   <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+    <a href="flora.html" target="main_frame" class="btn-next">
+        CONTINUE TO FLORA <span style="margin-left: 10px;">→</span>
+    </a>
+</div>
+
+<footer>
+    <div class="footer">
+    <h2 class="footer-slogan">BHINNEKA TUNGGAL IKA</h2>
+    <p class="footer-sub">THE ETERNAL SOUL OF INDONESIA</p>
+</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Untamed Soul - Endemic Fauna of Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;600&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    
+        <style>
+    :root{
+        --sienna: #a0522d; 
+        --gold-glow: #ffc200; 
+        --deep-forest: #0a0a0a;
+        --soft-white: #f0f0f0;
+        --transparent-dark: rgba(10, 10, 10, 0.95);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background-color: var(--deep-forest);
+        color: var(--soft-white);
+        font-family: 'Montserrat', sans-serif;
+        overflow-x: hidden;
+    }
+
+    @keyframes subtleGlow {
+        0% { opacity: 0.8; }
+        50% { opacity: 1; }
+        100% { opacity: 0.8; }
+    }
+
+    
+    .btn-home {
+        position: fixed;
+        top: 40px; left: 40px;
+        z-index: 100;
+        color: var(--gold-glow);
+        text-decoration: none;
+        letter-spacing: 3px;
+        font-size: 0.8rem;
+        padding: 12px 25px;
+        border: 1px solid var(--gold-glow);
+        background: rgba(0,0,0,0.7);
+        backdrop-filter: blur(15px);
+        transition: 0.5s;
+        text-transform: uppercase;
+        font-family: 'Cinzel', serif;
+    }
+    .btn-home:hover { background: var(--gold-glow); color: var(--deep-forest); box-shadow: 0 0 25px rgba(255, 194, 0, 0.5); }
+
+    
+    .judul{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--deep-forest)),
+        url('https://img.freepik.com/free-photo/beautiful-giraffe-wild_23-2151708873.jpg?semt=ais_hybrid&w=740&q=80'); /* Gambar hutan senja/subuh */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .judul h1 {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(3rem, 12vw, 8rem);
+        color: var(--gold-glow);
+        letter-spacing: 25px;
+        text-shadow: 0 0 40px rgba(255, 194, 0, 0.7);
+        line-height: 1;
+        animation: textShine 5s infinite alternate;
+    }
+
+    .judul p {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 1.6rem;
+        color: var(--soft-white);
+        opacity: 0.7;
+        margin-top: 25px;
+        letter-spacing: 4px;
+    }
+
+     @keyframes textShine {
+        from { filter: brightness(1); }
+        to { filter: brightness(1.2); }
+    }
+
+    
+    .container {
+        max-width: 1400px;
+        margin: -100px auto 100px; 
+        padding: 0 20px;
+        position: relative;
+        z-index: 10;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 60px;
+    }
+
+    
+    
+    .table{
+        background: var(--transparent-dark);
+        border: 1px solid rgba(255, 194, 0, 0.1);
+        padding: 30px;
+        position: relative;
+        overflow: hidden;
+        transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        backdrop-filter: blur(10px);
+    }
+
+    .table:hover {
+        border-color: var(--gold-glow);
+        transform: translateY(-20px) scale(1.02);
+        background: rgba(255, 194, 0, 0.05);
+        box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 30px rgba(255, 194, 0, 0.4);
+    }
+
+    .table .img-container {
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .table img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 2s cubic-bezier(0.23, 1, 0.32, 1);
+        filter: brightness(0.7) contrast(1.1) grayscale(20%); 
+    }
+
+    .table:hover img {
+        transform: scale(1.15); 
+        filter: brightness(1) contrast(1.2) grayscale(0%); 
+    }
+
+    
+    .table .info {
+        padding: 30px 10px 10px;
+        position: relative;
+        z-index: 1; 
+    }
+
+    .table .status {
+        font-size: 0.75rem;
+        color: var(--sienna);
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        border-bottom: 2px solid var(--gold-glow); 
+        padding-bottom: 8px;
+        display: inline-block;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .table h2 {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem; 
+        margin-bottom: 20px;
+        color: var(--gold-glow);
+        text-shadow: 0 0 10px rgba(255, 194, 0, 0.3);
+    }
+
+    .table p {
+        font-size: 1.05rem; 
+        line-height: 2;
+        color: #c9c9c9;
+        text-align: justify;
+    }
+
+   
+    .table::after {
+        content: "";
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 0; height: 0;
+        background: radial-gradient(circle, rgba(255, 194, 0, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.8s, height 0.8s, opacity 0.8s;
+        opacity: 0;
+    }
+    .table:hover::after {
+        width: 100%; height: 100%;
+        opacity: 1;
+    }
+
+   
+    footer {
+        text-align: center;
+        padding: 150px 20px;
+        border-top: 1px solid rgba(255, 194, 0, 0.2);
+    }
+
+    .footer-slogan {
+        font-family: 'Cinzel', serif;
+        font-size: 3rem;
+        color: var(--gold-glow);
+        letter-spacing: 18px;
+        text-shadow: 0 0 20px rgba(255, 194, 0, 0.5);
+    }
+
+    .footer-credit {
+        font-size: 0.8rem;
+        letter-spacing: 4px;
+        color: #888;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .fauna-grid { grid-template-columns: 1fr; }
+        .fauna-hero h1 { letter-spacing: 15px; }
+        .fauna-card .img-container { height: 350px; }
+    }
+
+   
+    .btn-nav-luxury {
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #f0c34d;
+    border: 1px solid #b8860b; 
+    background: rgba(184, 134, 11, 0.15);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 0 15px rgba(184, 134, 11, 0.4), inset 0 0 10px rgba(184, 134, 11, 0.2);
+    }
+
+    .btn-nav-luxury:hover {
+    background: #f0c34d;
+    color: #050505;
+    box-shadow: 0 0 50px rgba(184, 134, 11, 0.9);
+    transform: translateY(-5px);
+    }
+
+
+    .next{
+        text-align: center;
+        margin: 100px 0;
+    }
+
+    .next .btn-nav-luxury {
+        padding: 20px 60px;
+        font-size: 1rem;
+        letter-spacing: 5px;
+    }
+    </style>
+</head>
+<body>
+
+    <a href="Flora.HTML" class="btn-home">BACK TO JOURNEY</a>
+
+    <header class="judul">
+        <p>EXPLORE THE ENDEMIC</p>
+        <h1>FAUNA</h1>
+        <p>"Penjaga Warisan Liar dari Garis Wallace & Weber"</p>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            
+            <article class="table">
+                <div class="img-container">
+                    <img src="https://img.freepik.com/premium-photo/komodo-dragon-is-ground-indonesia-komodo-national-park_265142-9303.jpg" alt="Komodo">
+                </div>
+                <div class="info">
+                    <span class="status">Critically Endangered • NTT</span>
+                    <h2>Komodo Dragon</h2>
+                    <p>Reptil purba terbesar di dunia yang hanya dapat ditemukan di gugusan pulau Taman Nasional Komodo. Sebagai predator puncak, Komodo adalah simbol kekuatan dan keunikan evolusi yang tidak dimiliki negara lain manapun di dunia.</p>
+                </div>
+            </article>
+
+            <article class="table">
+                <div class="img-container">
+                    <img src="https://st.depositphotos.com/1546172/3208/i/450/depositphotos_32084501-stock-photo-sumatran-tiger.jpg" alt="Harimau">
+                </div>
+                <div class="info">
+                    <span class="status">Very Rare • Sumatera</span>
+                    <h2>Harimau Sumatera</h2>
+                    <p>Satu-satunya subspesies harimau Indonesia yang tersisa. Tubuhnya yang lebih kecil dengan loreng yang lebih rapat memudahkannya menembus lebatnya hutan hujan Sumatera. Ia adalah penjaga rimba yang penuh misteri dan kewibawaan.</p>
+                </div>
+            </article>
+
+            <article class="table">
+                <div class="img-container">
+                    <img src="https://gembiralokazoo.com/storage/animal/2hbOlBxB2FuuX0DtZ7O03ouyUmTqUGJ0l4qnUdFk.jpg" alt="Orangutan">
+                </div>
+                <div class="info">
+                    <span class="status">Endemic • Kalimantan</span>
+                    <h2>Orangutan Borneo</h2>
+                    <p>Primata cerdas yang berbagi 97% DNA dengan manusia. Dikenal sebagai "Orang Hutan", ia memegang peran vital dalam persebaran benih pohon di hutan Borneo. Tatapannya yang penuh makna melambangkan kedekatan manusia dengan alam Nusantara.</p>
+                </div>
+            </article>
+
+            <article class="table">
+                <div class="img-container">
+                    <img src="https://i0.wp.com/www.jalanmelali.com/wp-content/uploads/2025/02/jalak-bali.jpg?resize=572%2C660&ssl=1" alt="Jalak Bali">
+                </div>
+                <div class="info">
+                    <span class="status">High Conservation • Bali</span>
+                    <h2>Jalak Bali</h2>
+                    <p>Burung dengan keanggunan tiada tara, memiliki bulu putih bersih dengan aksen biru di sekitar matanya. Jalak Bali adalah permata udara pulau Dewata yang sangat dihargai oleh para pecinta fauna di seluruh mancanegara.</p>
+                </div>
+            </article>
+
+            <article class="table">
+                <div class="img-container">
+                    <img src="https://asset.kompas.com/crops/eX3w3Rc3LBit1km-v_EF8lDP2RE=/0x0:940x627/1200x800/data/photo/2022/01/25/61efcdee1bf46.jpg" alt="Cendrawasih">
+                </div>
+                <div class="info">
+                    <span class="status">Bird of Paradise • Papua</span>
+                    <h2>Cendrawasih</h2>
+                    <p>Sering disebut sebagai "Burung dari Surga" karena keindahan bulunya yang sangat spektakuler. Tarian burung jantan saat memikat betina di pedalaman hutan Papua merupakan salah satu pertunjukan alam paling indah di dunia.</p>
+                </div>
+            </article>
+
+            <article class="table">
+                <div class="img-container">
+                    <img src="https://images.forestdigest.com/upload/2019/20190811124851.jpg" alt="Bekantan">
+                </div>
+                <div class="info">
+                    <span class="status">Stable Population • Kalimantan</span>
+                    <h2>Bekantan</h2>
+                    <p>Dikenal karena hidungnya yang panjang dan perut buncit yang unik. Meskipun populasinya masi lebih banyak dibanding harimau, Bekantan tetap merupakan hewan endemik Kalimantan yang sangat dilindungi dan menjadi ikon wisata konservasi.</p>
+                </div>
+            </article>
+
+
+        </div>
+    </div>
+
+    <div class="next">
+    <a href="sejarah.html" class="btn-nav-luxury" target="main_frame">
+        JELAJAHI SEJARAH BANGSA <span style="margin-left: 15px;">→</span>
+    </a>
+    </div>
+
+    <footer>
+        <h2 class="footer-logo">SAVING THE SOUL</h2>
+        <p style="letter-spacing: 5px; opacity: 0.5;">ANIMALS • FAUNA CONSERVATION • 2026</p>
+    </footer>
+
+</body>
+</html>
