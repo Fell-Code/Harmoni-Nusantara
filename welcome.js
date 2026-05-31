@@ -8,12 +8,12 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtube-player', {
-        videoId: '2P9CVWVZtiR_s8z-', // ID video kamu
+        linkVideo: 'https://youtu.be/aKtb7Y3qOck?si=qmPL5dQ416lvcRtw', 
         playerVars: { 
             'autoplay': 1, 
             'mute': 1, // Harus mute agar autoplay diizinkan browser
             'loop': 1, 
-            'playlist': '2P9CVWVZtiR_s8z-', 
+            'playlist': 'https://youtu.be/aKtb7Y3qOck?si=qmPL5dQ416lvcRtw', 
             'origin': window.location.origin 
         }
     });
