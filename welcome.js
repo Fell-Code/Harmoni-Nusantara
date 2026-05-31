@@ -3,12 +3,12 @@ let player;
 // Fungsi dari YouTube API
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtube-player', {
-        videoId: 'aKtb7Y3qOck',
+        videoId: '2P9CVWVZtiR_s8z-',
         playerVars: { 
             'autoplay': 1, 
             'mute': 1, // Harus mute di awal agar video bisa ter-load
             'loop': 1, 
-            'playlist': 'aKtb7Y3qOck' 
+            'playlist': '2P9CVWVZtiR_s8z-' 
         },
         events: {
             'onReady': function(event) {
