@@ -6,106 +6,41 @@
     <title>Harmoni Nusantara</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --gold: #f5cf66;
-            --deep-bg: #030712;
-        }
-
+        :root { --gold: #f5cf66; --deep-bg: #030712; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: var(--deep-bg);
-            font-family: 'Montserrat', sans-serif;
-        }
+        body, html { width: 100%; height: 100%; overflow: hidden; background-color: var(--deep-bg); font-family: 'Montserrat', sans-serif; }
 
         #welcome-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            z-index: 9999;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; z-index: 9999;
             transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.4s ease;
         }
+        #welcome-container.open { transform: translateY(-100%); opacity: 0; pointer-events: none; }
 
-        #welcome-container.open {
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* Background Foto Statis dengan Efek Animasi Halus */
         .bg-cinematic {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://wallpaperaccess.com/full/21963.jpg');
-            background-size: cover;
-            background-position: center;
-            animation: zoomSlow 25s ease infinite alternate;
-            z-index: 1;
+            background-size: cover; background-position: center;
+            animation: zoomSlow 25s ease infinite alternate; z-index: 1;
         }
-
-        @keyframes zoomSlow {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
-        }
-
-        .bg-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(3, 7, 18, 0.6);
-            z-index: 2;
-        }
-
-        .welcome-content {
-            position: relative;
-            z-index: 3;
-            padding: 20px;
-        }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 6vw, 4rem);
-            color: white;
-            letter-spacing: 10px;
-            margin-bottom: 20px;
-        }
-
-        .btn-luxury {
-            padding: 18px 55px;
-            background: linear-gradient(135deg, #f5cf66, #d4af37);
-            border: none;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            transition: 0.3s;
-        }
-
-        .btn-luxury:hover {
-            box-shadow: 0 0 20px rgba(245, 207, 102, 0.5);
-        }
+        @keyframes zoomSlow { from { transform: scale(1); } to { transform: scale(1.1); } }
+        .bg-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(3, 7, 18, 0.6); z-index: 2; }
+        .welcome-content { position: relative; z-index: 3; padding: 20px; }
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 6vw, 4rem); color: white; letter-spacing: 10px; margin-bottom: 20px; }
+        .btn-luxury { padding: 18px 55px; background: linear-gradient(135deg, #f5cf66, #d4af37); border: none; cursor: pointer; font-family: 'Cinzel', serif; font-weight: 700; transition: 0.3s; }
+        .btn-luxury:hover { box-shadow: 0 0 20px rgba(245, 207, 102, 0.5); }
     </style>
 </head>
 <body>
 
+    <audio id="backsound" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
     <div id="welcome-container">
         <div class="bg-cinematic"></div>
         <div class="bg-overlay"></div>
-        
         <div class="welcome-content">
             <p style="color:white; letter-spacing: 5px; margin-bottom:10px;">A CURATED COLLECTION OF</p>
             <h1>WONDERFUL INDONESIA</h1>
