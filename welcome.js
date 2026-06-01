@@ -3,27 +3,23 @@ document.addEventListener("DOMContentLoaded", function() {
     const welcomeContainer = document.getElementById('welcome-container');
     const mainFrame = document.getElementById('mainFrame');
 
-    // 1. Membuka gerbang dan menambah riwayat
     btnJelajahi.addEventListener('click', function() {
         welcomeContainer.classList.add('open');
         mainFrame.src = 'home_content.html';
-        
-        // Menambah state ke riwayat browser
-        history.pushState({ page: 'content' }, 'Content', '#content');
+        // Tambahkan satu history kosong agar tombol back aktif
+        history.pushState({page: 'home'}, '', '');
     });
 
-    // 2. Fungsi untuk menutup gerbang
     window.tutupGerbang = function() {
         welcomeContainer.classList.remove('open');
         setTimeout(() => {
             mainFrame.src = 'about:blank';
-        }, 500);
+        }, 1400); // Sesuaikan dengan durasi transisi CSS (1.4s)
     };
 
-    // 3. Mendeteksi jika tombol "Back" browser ditekan
-    window.addEventListener('popstate', function(event) {
-        if (!event.state) {
-            // Jika kembali ke state awal, tutup gerbang
+    // Ini kunci agar tombol back menutup gerbang
+    window.addEventListener('popstate', function() {
+        if (welcomeContainer.classList.contains('open')) {
             window.tutupGerbang();
         }
     });
