@@ -4,12 +4,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const mainFrame = document.getElementById('mainFrame');
 
     // Membuka gerbang
-    btnJelajahi.addEventListener('click', function() {
-        welcomeContainer.classList.add('open');
-        mainFrame.src = 'home_content.html';
-    });
+    if (btnJelajahi) {
+        btnJelajahi.addEventListener('click', function() {
+            welcomeContainer.classList.add('open');
+            mainFrame.src = 'home_content.html';
+        });
+    }
 
-    // Fungsi untuk menutup gerbang kembali
+    // Fungsi global agar bisa dipanggil dari dalam iframe
     window.tutupGerbang = function() {
         welcomeContainer.classList.remove('open');
         setTimeout(() => {
