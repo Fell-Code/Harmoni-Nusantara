@@ -1,26 +1,22 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Mengambil semua kartu navigasi
-    const navCards = document.querySelectorAll('.nav-card');
+    // 1. Fungsi Kembali dengan tombol ESC
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            if (window.parent && window.parent.tutupGerbang) {
+                window.parent.tutupGerbang();
+            }
+        }
+    });
 
-    // 2. Memberikan efek hover pada kartu
+    // 2. Efek Hover pada menu navigasi
+    const navCards = document.querySelectorAll('.nav-card');
     navCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
             card.style.transform = 'scale(1.05)';
             card.style.transition = '0.3s ease';
         });
-
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'scale(1)';
         });
     });
-
-    // 3. Optional: Menambahkan animasi saat halaman dimuat
-    const title = document.querySelector('.main-title');
-    if (title) {
-        title.style.opacity = '0';
-        title.style.transition = 'opacity 1.5s ease';
-        setTimeout(() => {
-            title.style.opacity = '1';
-        }, 100);
-    }
 });
