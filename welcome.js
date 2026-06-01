@@ -23,17 +23,17 @@ function onYouTubeIframeAPIReady() {
 
 document.addEventListener("DOMContentLoaded", function() {
     const btn = document.getElementById('btn-jelajahi');
-    const welcomeContainer = document.getElementById('welcome-container');
-
-    // 1. Logika Klik Tombol
-    if (btn) {
-        btn.addEventListener('click', function() {
-            // Putar video saat tombol diklik
-            if (player) {
-                player.playVideo();
-            }
-            // Pindah halaman
-            loadContent('home_content.html');
-        });
+    
+    if (!btn) {
+        console.error("Tombol dengan ID 'btn-jelajahi' tidak ditemukan!");
+        return;
     }
+
+    btn.addEventListener('click', function() {
+        console.log("Tombol diklik!"); // Cek di Console Browser (F12)
+        if (player) {
+            player.playVideo();
+        }
+        loadContent('home_content.html');
+    });
 });
