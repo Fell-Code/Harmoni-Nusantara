@@ -1,24 +1,20 @@
 let player;
 
-// 1. Inisialisasi YouTube API
+// Fungsi callback dari YouTube API
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtube-player', {
         height: '0',
         width: '0',
-        videoId: 'QAE6WhaPwiytt5Q6', // GANTI DENGAN ID VIDEO ANDA
+        videoId: 'SBZIfGsNute_wvpv', // GANTI DENGAN ID VIDEO YOUTUBE ANDA
         playerVars: {
-            'autoplay': 0, // Jangan auto-play saat load pertama
+            'autoplay': 0,
             'loop': 1,
-            'playlist': 'QAE6WhaPwiytt5Q6'
+            'playlist': 'SBZIfGsNute_wvpv'
         },
         events: {
-            'onReady': onPlayerReady
+            'onReady': () => console.log('Player Siap')
         }
     });
-}
-
-function onPlayerReady(event) {
-    console.log("Player Siap");
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -26,27 +22,23 @@ document.addEventListener("DOMContentLoaded", function() {
     const welcomeContainer = document.getElementById('welcome-container');
     const mainFrame = document.getElementById('mainFrame');
 
-    // 2. Fungsi saat tombol diklik
+    // Klik tombol untuk membuka gerbang
     btnJelajahi.addEventListener('click', function() {
-        // Jalankan transisi gerbang
         welcomeContainer.classList.add('open');
-
-        // Mainkan musik (hanya bisa setelah interaksi user)
+        mainFrame.src = 'home_content.html';
+        
+        // Mulai musik
         if (player && typeof player.playVideo === 'function') {
             player.playVideo();
         }
-
-        // Muat konten
-        mainFrame.src = 'home_content.html';
     });
 
-    // 3. Logika untuk "Kembali ke Awal" (Navigasi dalam iFrame)
-    // Jika Anda ingin tombol "Kembali" di home_content.html memicu ini:
-    window.kembaliKeAwal = function() {
+    // Fungsi untuk menutup gerbang (dipanggil dari iframe)
+    window.tutupGerbang = function() {
         welcomeContainer.classList.remove('open');
         mainFrame.src = 'about:blank';
         
-        // Matikan musik atau reset ke awal
+        // Reset musik
         if (player) {
             player.stopVideo();
         }
