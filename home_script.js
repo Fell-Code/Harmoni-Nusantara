@@ -1,27 +1,17 @@
 document.addEventListener("DOMContentLoaded", function() {
     
-    // 1. Fungsi Kembali dengan tombol ESC (Tanpa tombol visual)
+    // 1. Fungsi kembali yang stabil dengan tombol ESC
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
+            // Kita hanya perlu memanggil fungsi tutupGerbang() dari file index.html
+            // Hapus history.back() karena itu yang menyebabkan glitch/reload
             if (window.parent && window.parent.tutupGerbang) {
                 window.parent.tutupGerbang();
             }
         }
     });
 
-    // Di dalam home_script.js
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        // Ini akan memicu tombol Back browser atau fungsi tutup gerbang
-        if (window.parent && window.parent.tutupGerbang) {
-            window.parent.tutupGerbang();
-            // Opsional: memaksa browser kembali ke history sebelumnya
-            history.back(); 
-        }
-    }
-});
-
-    // 2. Efek Hover pada menu navigasi (Hanya efek visual)
+    // 2. Efek Hover pada menu navigasi
     const navCards = document.querySelectorAll('.nav-card');
     navCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
