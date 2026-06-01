@@ -1,27 +1,54 @@
 let player;
 
+// 1. Inisialisasi YouTube API
 function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-        videoId: 'ID_VIDEO_ANDA', // GANTI DENGAN ID VIDEO YOUTUBE ANDA
-        events: { 'onReady': () => console.log('Player siap') }
+    player = new YT.Player('youtube-player', {
+        height: '0',
+        width: '0',
+        videoId: 'QAE6WhaPwiytt5Q6', // GANTI DENGAN ID VIDEO ANDA
+        playerVars: {
+            'autoplay': 0, // Jangan auto-play saat load pertama
+            'loop': 1,
+            'playlist': 'QAE6WhaPwiytt5Q6'
+        },
+        events: {
+            'onReady': onPlayerReady
+        }
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById('btn-jelajahi');
-    const welcome = document.getElementById('welcome-container');
-    const mainContent = document.getElementById('main-content');
-    const mainFrame = document.getElementById('main-frame');
+function onPlayerReady(event) {
+    console.log("Player Siap");
+}
 
-    btn.addEventListener('click', () => {
-        // Putar musik
+document.addEventListener("DOMContentLoaded", function() {
+    const btnJelajahi = document.getElementById('btnJelajahi');
+    const welcomeContainer = document.getElementById('welcome-container');
+    const mainFrame = document.getElementById('mainFrame');
+
+    // 2. Fungsi saat tombol diklik
+    btnJelajahi.addEventListener('click', function() {
+        // Jalankan transisi gerbang
+        welcomeContainer.classList.add('open');
+
+        // Mainkan musik (hanya bisa setelah interaksi user)
         if (player && typeof player.playVideo === 'function') {
             player.playVideo();
         }
 
-        // Tampilkan konten, sembunyikan welcome
-        welcome.style.display = 'none';
-        mainContent.style.display = 'block';
+        // Muat konten
         mainFrame.src = 'home_content.html';
     });
+
+    // 3. Logika untuk "Kembali ke Awal" (Navigasi dalam iFrame)
+    // Jika Anda ingin tombol "Kembali" di home_content.html memicu ini:
+    window.kembaliKeAwal = function() {
+        welcomeContainer.classList.remove('open');
+        mainFrame.src = 'about:blank';
+        
+        // Matikan musik atau reset ke awal
+        if (player) {
+            player.stopVideo();
+        }
+    };
 });
