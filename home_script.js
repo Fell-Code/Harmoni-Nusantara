@@ -9,6 +9,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // Di dalam home_script.js
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        // Ini akan memicu tombol Back browser atau fungsi tutup gerbang
+        if (window.parent && window.parent.tutupGerbang) {
+            window.parent.tutupGerbang();
+            // Opsional: memaksa browser kembali ke history sebelumnya
+            history.back(); 
+        }
+    }
+});
+
     // 2. Efek Hover pada menu navigasi (Hanya efek visual)
     const navCards = document.querySelectorAll('.nav-card');
     navCards.forEach(card => {
