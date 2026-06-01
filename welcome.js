@@ -1,59 +1,30 @@
-// --- KONFIGURASI GLOBAL ---
-let player;
-const VIDEO_ID = 'ID_VIDEO_ANDA'; // <-- GANTI DENGAN ID VIDEO YOUTUBE ANDA
-
-// 1. Inisialisasi YouTube API (Wajib ada)
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-player', {
-        height: '0',
-        width: '0',
-        videoId: DJI7ThiOCQx6aoUe,
-        playerVars: {
-            'autoplay': 0, // Dibiarkan 0 karena kita panggil via klik
-            'loop': 1,
-            'playlist': DJI7ThiOCQx6aoUe
-        },
-        events: {
-            'onReady': () => console.log("Player YouTube Siap.")
-        }
-    });
-}
-
-// 2. Fungsi Utama Navigasi
 document.addEventListener("DOMContentLoaded", function() {
+    // Mengambil elemen dari index.html
     const btnJelajahi = document.getElementById('btnJelajahi');
     const welcomeContainer = document.getElementById('welcome-container');
     const mainFrame = document.getElementById('mainFrame');
 
-    // Aksi Klik Jelajahi
+    // 1. Aksi saat tombol "JELAJAHI" diklik
     if (btnJelajahi) {
         btnJelajahi.addEventListener('click', function() {
-            // Animasi Gerbang Terbuka
+            // Memberikan class 'open' untuk memicu animasi transisi CSS (gerbang ke atas)
             welcomeContainer.classList.add('open');
 
-            // Jalankan Musik
-            if (player && typeof player.playVideo === 'function') {
-                player.playVideo();
-            }
-
-            // Muat Konten Utama
+            // Memuat halaman konten ke dalam iframe
             mainFrame.src = 'home_content.html';
         });
     }
 
-    // 3. Fungsi Global untuk Kembali ke Beranda (Dapat dipanggil dari iframe)
+    // 2. Fungsi Global untuk kembali ke beranda
+    // Fungsi ini dipanggil menggunakan "window.parent.tutupGerbang()" 
+    // dari file HTML yang ada di dalam iframe
     window.tutupGerbang = function() {
-        // Hapus class open agar gerbang menutup kembali
+        // Menghapus class 'open' agar gerbang turun kembali ke bawah
         welcomeContainer.classList.remove('open');
         
-        // Hentikan musik
-        if (player && typeof player.stopVideo === 'function') {
-            player.stopVideo();
-        }
-
-        // Reset iframe ke kosong
+        // Memberi jeda 500ms agar animasi gerbang terlihat rapi sebelum iframe dikosongkan
         setTimeout(() => {
             mainFrame.src = 'about:blank';
-        }, 500); // Tunggu animasi transisi selesai (0.5 detik)
+        }, 500);
     };
 });
