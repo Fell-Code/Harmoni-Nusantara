@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
     const btn = document.getElementById('btnJelajahi');
-    const iframe = document.querySelector('#youtube-player iframe');
+    const welcome = document.getElementById('welcome-container');
 
     btn.addEventListener('click', function() {
-        document.getElementById('welcome-container').classList.add('open');
+        // Menutup gerbang selamat datang
+        welcome.classList.add('open');
         
-        // Memaksa suara aktif dengan mengubah parameter URL
-        iframe.src = iframe.src.replace("mute=1", "mute=0");
+        // Simpan status agar halaman tetap terbuka
+        window.history.pushState({page: 'home'}, '', '');
     });
 });
