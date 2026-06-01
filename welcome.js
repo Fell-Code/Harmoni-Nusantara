@@ -6,21 +6,13 @@ document.addEventListener("DOMContentLoaded", function() {
     btnJelajahi.addEventListener('click', function() {
         welcomeContainer.classList.add('open');
         mainFrame.src = 'home_content.html';
-        // Tambahkan satu history kosong agar tombol back aktif
-        history.pushState({page: 'home'}, '', '');
     });
 
     window.tutupGerbang = function() {
         welcomeContainer.classList.remove('open');
+        // Jeda 1.4 detik agar animasi gerbang selesai dulu baru iframe dikosongkan
         setTimeout(() => {
             mainFrame.src = 'about:blank';
-        }, 1400); // Sesuaikan dengan durasi transisi CSS (1.4s)
+        }, 1400);
     };
-
-    // Ini kunci agar tombol back menutup gerbang
-    window.addEventListener('popstate', function() {
-        if (welcomeContainer.classList.contains('open')) {
-            window.tutupGerbang();
-        }
-    });
 });
