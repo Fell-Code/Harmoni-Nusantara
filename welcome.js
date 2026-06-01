@@ -1,39 +1,27 @@
 let player;
 
-// Fungsi untuk memuat konten
-function loadContent(page) {
-    const mainFrame = document.getElementById('main-frame');
-    const welcomeContainer = document.getElementById('welcome-container');
-    
-    mainFrame.src = page;
-    // Menambahkan class untuk menyembunyikan halaman selamat datang
-    welcomeContainer.classList.add('hidden'); 
-}
-
-// Inisialisasi YouTube Player
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-        events: {
-            'onReady': (event) => {
-                console.log('Player siap');
-            }
-        }
+        videoId: 'ID_VIDEO_ANDA', // GANTI DENGAN ID VIDEO YOUTUBE ANDA
+        events: { 'onReady': () => console.log('Player siap') }
     });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById('btn-jelajahi');
-    
-    if (!btn) {
-        console.error("Tombol dengan ID 'btn-jelajahi' tidak ditemukan!");
-        return;
-    }
+    const welcome = document.getElementById('welcome-container');
+    const mainContent = document.getElementById('main-content');
+    const mainFrame = document.getElementById('main-frame');
 
-    btn.addEventListener('click', function() {
-        console.log("Tombol diklik!"); // Cek di Console Browser (F12)
-        if (player) {
+    btn.addEventListener('click', () => {
+        // Putar musik
+        if (player && typeof player.playVideo === 'function') {
             player.playVideo();
         }
-        loadContent('home_content.html');
+
+        // Tampilkan konten, sembunyikan welcome
+        welcome.style.display = 'none';
+        mainContent.style.display = 'block';
+        mainFrame.src = 'home_content.html';
     });
 });
