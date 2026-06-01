@@ -1,51 +1,26 @@
-let player;
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Langsung muat home_content saat halaman dibuka
+    loadContent('home_content.html');
 
-// Fungsi dari YouTube API
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-player', {
-        videoId: 'https://youtu.be/aKtb7Y3qOck?si=qmPL5dQ416lvcRtw',
-        playerVars: { 
-            'autoplay': 1, 
-            'mute': 1, // Harus mute di awal agar video bisa ter-load
-            'loop': 1, 
-            'playlist': 'https://youtu.be/aKtb7Y3qOck?si=qmPL5dQ416lvcRtw' 
-        },
-        events: {
-            'onReady': function(event) {
-                console.log("Player Siap");
-            }
+    // 2. Logika untuk memutar musik setelah interaksi pertama
+    const playMusic = () => {
+        if (player && typeof player.playVideo === 'function') {
+            player.playVideo();
         }
-    });
-}
+        // Hapus event listener agar tidak terpicu terus menerus
+        document.removeEventListener('click', playMusic);
+    };
 
-function bukaGerbang() {
-    const welcome = document.getElementById('welcome-container');
-    welcome.classList.add('open');
+    document.addEventListener('click', playMusic);
+});
+
+function loadContent(page) {
+    const mainFrame = document.getElementById('main-frame');
+    mainFrame.src = page;
     
-    // Logika agar suara muncul:
-    if (player) {
-        player.seekTo(0);    // Mengulang dari detik ke-0
-        player.unMute();     // Membuka suara
-        player.setVolume(100);
-        player.playVideo();  // Memaksa putar
+    // Sembunyikan elemen welcome jika perlu
+    const welcomeContainer = document.getElementById('welcome-container');
+    if (welcomeContainer) {
+        welcomeContainer.classList.add('hidden'); // Pastikan Anda punya class .hidden { display: none; } di CSS
     }
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    const btn = document.getElementById('btnJelajahi');
-    const iframe = document.getElementById('mainFrame');
-
-    btn.addEventListener('click', function() {
-        bukaGerbang();
-        iframe.src = "home_content.html";
-        window.history.pushState({page: 'home'}, '', '');
-    });
-
-    window.addEventListener('popstate', function() {
-        document.getElementById('welcome-container').classList.remove('open');
-        if (player) {
-            player.mute(); // Mematikan suara saat kembali ke menu awal
-            player.pauseVideo();
-        }
-    });
-});
