@@ -8,7 +8,6 @@
     <style>
         :root {
             --gold: #f5cf66;
-            --gold-glow: rgba(245, 207, 102, 0.4);
             --deep-bg: #030712;
         }
 
@@ -34,19 +33,16 @@
             align-items: center;
             text-align: center;
             z-index: 9999;
-            overflow: hidden;
-            transform: translateY(0);
-            transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.4s ease, visibility 1.4s;
+            transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.4s ease;
         }
 
         #welcome-container.open {
             transform: translateY(-100%);
             opacity: 0;
-            visibility: hidden;
             pointer-events: none;
         }
 
-        /* PERUBAHAN DISINI: Background Foto Statis dengan Efek Zoom Lambat */
+        /* Background Foto Statis dengan Efek Animasi Halus */
         .bg-cinematic {
             position: absolute;
             top: 0;
@@ -56,13 +52,13 @@
             background-image: url('https://wallpaperaccess.com/full/21963.jpg');
             background-size: cover;
             background-position: center;
-            animation: zoomSlow 30s ease infinite alternate;
+            animation: zoomSlow 25s ease infinite alternate;
             z-index: 1;
         }
 
         @keyframes zoomSlow {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
         }
 
         .bg-overlay {
@@ -71,45 +67,36 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(3, 7, 18, 0.4) 0%, rgba(11, 25, 44, 0.65) 50%, rgba(3, 7, 18, 0.85) 100%);
+            background: rgba(3, 7, 18, 0.6);
             z-index: 2;
         }
 
         .welcome-content {
             position: relative;
             z-index: 3;
-            padding: 0 20px;
-            max-width: 900px;
+            padding: 20px;
         }
 
-        .welcome-content h1 {
+        h1 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(2.2rem, 7.5vw, 4.8rem);
-            font-weight: 600;
-            color: #ffffff;
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: white;
+            letter-spacing: 10px;
             margin-bottom: 20px;
-            background: linear-gradient(to bottom, #ffffff 40%, #e2e8f0 70%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .btn-luxury {
-            outline: none;
+            padding: 18px 55px;
+            background: linear-gradient(135deg, #f5cf66, #d4af37);
             border: none;
+            cursor: pointer;
             font-family: 'Cinzel', serif;
             font-weight: 700;
-            text-transform: uppercase;
-            color: #050505;
-            background: linear-gradient(135deg, #f5cf66 0%, #d4af37 100%);
-            padding: 18px 55px;
-            cursor: pointer;
-            transition: all 0.5s ease;
+            transition: 0.3s;
         }
 
         .btn-luxury:hover {
-            color: #ffffff;
-            background: transparent;
-            box-shadow: 0 0 35px var(--gold-glow), inset 0 0 0 2px var(--gold);
+            box-shadow: 0 0 20px rgba(245, 207, 102, 0.5);
         }
     </style>
 </head>
@@ -120,8 +107,8 @@
         <div class="bg-overlay"></div>
         
         <div class="welcome-content">
-            <p style="color: #e2e8f0; letter-spacing: 8px; margin-bottom: 15px;">A CURATED COLLECTION OF</p>
-            <h1>WONDERFUL OF INDONESIA</h1>
+            <p style="color:white; letter-spacing: 5px; margin-bottom:10px;">A CURATED COLLECTION OF</p>
+            <h1>WONDERFUL INDONESIA</h1>
             <button id="btnJelajahi" class="btn-luxury">JELAJAHI</button>
         </div>
     </div>
