@@ -1,21 +1,51 @@
+let player;
+
+// Fungsi dari YouTube API
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-player', {
+        videoId: 'https://youtu.be/aKtb7Y3qOck?si=qmPL5dQ416lvcRtw',
+        playerVars: { 
+            'autoplay': 1, 
+            'mute': 1, // Harus mute di awal agar video bisa ter-load
+            'loop': 1, 
+            'playlist': 'https://youtu.be/aKtb7Y3qOck?si=qmPL5dQ416lvcRtw' 
+        },
+        events: {
+            'onReady': function(event) {
+                console.log("Player Siap");
+            }
+        }
+    });
+}
+
+function bukaGerbang() {
+    const welcome = document.getElementById('welcome-container');
+    welcome.classList.add('open');
+    
+    // Logika agar suara muncul:
+    if (player) {
+        player.seekTo(0);    // Mengulang dari detik ke-0
+        player.unMute();     // Membuka suara
+        player.setVolume(100);
+        player.playVideo();  // Memaksa putar
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     const btn = document.getElementById('btnJelajahi');
-    const welcome = document.getElementById('welcome-container');
-    const audio = document.getElementById('backsound');
+    const iframe = document.getElementById('mainFrame');
 
-    // Klik Jelajahi: Tutup gerbang & mulai musik
     btn.addEventListener('click', function() {
-        welcome.classList.add('open');
-        audio.play().catch(e => console.log("User harus berinteraksi dulu dengan halaman"));
-        window.history.pushState({page: 'home'}, '', '#home');
+        bukaGerbang();
+        iframe.src = "home_content.html";
+        window.history.pushState({page: 'home'}, '', '');
     });
 
-    // Deteksi tombol Back Browser
-    window.addEventListener('popstate', function(event) {
-        if (!event.state || event.state.page !== 'home') {
-            welcome.classList.remove('open');
-            audio.pause();
-            audio.currentTime = 0; // Reset musik ke awal
+    window.addEventListener('popstate', function() {
+        document.getElementById('welcome-container').classList.remove('open');
+        if (player) {
+            player.mute(); // Mematikan suara saat kembali ke menu awal
+            player.pauseVideo();
         }
     });
 });
