@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harmoni Nusantara</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght=200;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #f5cf66;
@@ -15,50 +15,26 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body, html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: var(--deep-bg);
-            font-family: 'Montserrat', sans-serif;
+            width: 100%; height: 100%; overflow: hidden;
+            background-color: var(--deep-bg); font-family: 'Montserrat', sans-serif;
         }
 
         #welcome-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            z-index: 9999;
-            overflow: hidden;
-            transform: translateY(0);
-            opacity: 1;
-            visibility: visible;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            z-index: 9999; overflow: hidden; transform: translateY(0); opacity: 1; visibility: visible;
             transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.4s ease, visibility 1.4s;
         }
 
         #welcome-container.open {
-            transform: translateY(-100%);
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+            transform: translateY(-100%); opacity: 0; visibility: hidden; pointer-events: none;
         }
 
         .bg-cinematic {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://wallpaperaccess.com/full/21963.jpg');
-            background-size: cover;
-            background-position: center;
-            animation: kenBurns 25s ease infinite alternate;
-            z-index: 1;
+            background-size: cover; background-position: center;
+            animation: kenBurns 25s ease infinite alternate; z-index: 1;
         }
 
         @keyframes kenBurns {
@@ -67,60 +43,29 @@
         }
 
         .bg-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, rgba(3, 7, 18, 0.4) 0%, rgba(11, 25, 44, 0.65) 50%, rgba(3, 7, 18, 0.85) 100%);
             z-index: 2;
         }
 
-        .welcome-content {
-            position: relative;
-            z-index: 3;
-            padding: 0 20px;
-            max-width: 900px;
-        }
+        .welcome-content { position: relative; z-index: 3; padding: 0 20px; max-width: 900px; }
 
         .welcome-content h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2.2rem, 7.5vw, 4.8rem);
-            font-weight: 600;
-            letter-spacing: 16px;
-            color: #ffffff;
-            margin-bottom: 20px;
+            font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 7.5vw, 4.8rem); font-weight: 600;
+            letter-spacing: 16px; color: #ffffff; margin-bottom: 20px;
             background: linear-gradient(to bottom, #ffffff 40%, #e2e8f0 70%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         .btn-luxury {
-            position: relative;
-            outline: none;
-            border: none;
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #050505;
+            position: relative; outline: none; border: none;
+            font-family: 'Cinzel', serif; font-weight: 700; text-transform: uppercase; color: #050505;
             background: linear-gradient(135deg, #f5cf66 0%, #d4af37 100%);
-            padding: 18px 55px;
-            cursor: pointer;
-            transition: all 0.5s;
+            padding: 18px 55px; cursor: pointer; transition: all 0.5s;
         }
 
-        .iframe-container {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-            z-index: 1;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+        .iframe-container { width: 100%; height: 100vh; position: relative; z-index: 1; }
+        iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
@@ -128,7 +73,6 @@
     <div id="welcome-container">
         <div class="bg-cinematic"></div>
         <div class="bg-overlay"></div>
-        
         <div class="welcome-content">
             <p style="color:#e2e8f0; letter-spacing:8px; margin-bottom:15px;">A CURATED COLLECTION OF</p>
             <h1>WONDERFUL OF INDONESIA</h1>
@@ -138,10 +82,9 @@
     </div>
 
     <div class="iframe-container">
-        <iframe src="home_content.html" name="main_frame" id="mainFrame"></iframe>
+        <iframe id="mainFrame" name="main_frame"></iframe>
     </div>
 
     <script src="welcome.js"></script>
-
-    </body>
+</body>
 </html>
