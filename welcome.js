@@ -32,3 +32,20 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+// Fungsi global agar bisa dipanggil dari dalam iframe home.html
+window.tutupGerbang = function() {
+    const welcomeContainer = document.getElementById("welcome-container");
+    const welcomeContent = document.querySelector(".welcome-content");
+    
+    if (welcomeContainer) {
+        // Hapus kelas open agar tirai kembali bergeser turun menutup halaman utama
+        welcomeContainer.classList.remove("open");
+        
+        // Munculkan kembali teks tulisan welcome secara halus
+        if (welcomeContent) {
+            welcomeContent.style.opacity = "1";
+            welcomeContent.style.transform = "translateY(0)";
+        }
+    }
+};
