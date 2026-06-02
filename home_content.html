@@ -17,27 +17,27 @@
             filter: brightness(0.5);
         }
 
-        /* Tombol Kembali yang Elegan & Stabil */
-        .btn-home {
-            position: fixed; top: 20px; left: 20px; z-index: 9999;
-            padding: 10px 20px; color: #fff; background: rgba(0,0,0,0.3);
-            border: 1px solid #f5cf66; font-family: 'Cinzel', serif;
-            cursor: pointer; transition: 0.3s;
-        }
-        .btn-home:hover { background: #f5cf66; color: #000; }
-
         .container { background-color: transparent !important; }
+
+        /* Style Interaktif untuk Tombol Panah Kembali pada Header */
+        .back-trigger {
+            cursor: pointer;
+            transition: color 0.3s ease, letter-spacing 0.3s ease;
+        }
+        .back-trigger:hover {
+            color: #f5cf66 !important;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
-
-    <button class="btn-home" onclick="window.parent.tutupGerbang()">← KEMBALI</button>
 
     <div class="bg-container"></div>
 
     <section class="container">
         <header class="header">
-            <div class="name">FELL DEVELOPER</div>
+            <!-- REFACTOR: Mengubah teks biasa menjadi tombol panah kembali sinematik sesuai video -->
+            <div class="name back-trigger" onclick="window.parent.tutupGerbang()">← FELL DEVELOPER</div>
             <div class="class">INDONESIA</div>
         </header>
 
@@ -48,23 +48,24 @@
         </div>
 
         <nav class="bottom-menu">
-            <a href="pemandangan.html" target="main_frame" class="nav-card" style="--bg-url: url('https://png.pngtree.com/thumb_back/fh260/background/20240912/pngtree-borobudur-temple-at-sunrise-with-mountain-view-in-indonesia-image_16166646.jpg')">
+            <!-- REFACTOR: Menghapus target="main_frame" pengacau rute agar aman dari error 404 GitHub -->
+            <a href="javascript:void(0);" class="nav-card" style="--bg-url: url('https://png.pngtree.com/thumb_back/fh260/background/20240912/pngtree-borobudur-temple-at-sunrise-with-mountain-view-in-indonesia-image_16166646.jpg')">
                 <span class="label">Pemandangan</span>
                 <span class="sub">Bentang Alam Megah</span>
             </a>
-            <a href="budaya.html" target="main_frame" class="nav-card" style="--bg-url: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0FRMr1TdZBc4pdrPKi4_V8uNWUJu523W9SdAZZRCT5-HMAmQanplHjUTtKBAV5W9kvDSq6I7M7breI6mgC7ueDxjpoXD0U6P9lyx-HyAGcKNgjGUnd8kEwhOg9J-xXM8u4Gm8cUjj02c2/s1600/wayang.jpg')">
+            <a href="javascript:void(0);" class="nav-card" style="--bg-url: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0FRMr1TdZBc4pdrPKi4_V8uNWUJu523W9SdAZZRCT5-HMAmQanplHjUTtKBAV5W9kvDSq6I7M7breI6mgC7ueDxjpoXD0U6P9lyx-HyAGcKNgjGUnd8kEwhOg9J-xXM8u4Gm8cUjj02c2/s1600/wayang.jpg')">
                 <span class="label">Budaya</span>
                 <span class="sub">Tradisi & Warisan</span>
             </a>
-            <a href="flora.html" target="main_frame" class="nav-card" style="--bg-url: url('https://millionbloom.com/cdn/shop/articles/20_Daftar_Nama_nama_Bunga_di_Indonesia_yang_Sangat_Langka_1500x.jpg?v=1712050485')">
+            <a href="javascript:void(0);" class="nav-card" style="--bg-url: url('https://millionbloom.com/cdn/shop/articles/20_Daftar_Nama_nama_Bunga_di_Indonesia_yang_Sangat_Langka_1500x.jpg?v=1712050485')">
                 <span class="label">Flora</span>
                 <span class="sub">Eksotisme Tanaman</span>
             </a>
-            <a href="fauna.html" target="main_frame" class="nav-card" style="--bg-url: url('https://lister.co.id/wp-content/uploads/2023/08/Peta-Persebaran-Flora-dan-Fauna-di-Indonesia-Ada-3-Jenis.jpg')">
+            <a href="javascript:void(0);" class="nav-card" style="--bg-url: url('https://lister.co.id/wp-content/uploads/2023/08/Peta-Persebaran-Flora-dan-Fauna-di-Indonesia-Ada-3-Jenis.jpg')">
                 <span class="label">Fauna</span>
                 <span class="sub">Satwa Endemik</span>
             </a>
-            <a href="sejarah.html" target="main_frame" class="nav-card" style="--bg-url: url('https://www.jakartamu.com/wp-content/uploads/2024/12/map-of-indonesia-large-1068x610-1.jpg')">
+            <a href="javascript:void(0);" class="nav-card" style="--bg-url: url('https://www.jakartamu.com/wp-content/uploads/2024/12/map-of-indonesia-large-1068x610-1.jpg')">
                 <span class="label">Sejarah</span>
                 <span class="sub">Warisan Hidup</span>
             </a>
@@ -72,10 +73,12 @@
     </section>
 
     <script>
-        // ESC untuk kembali
+        // Fungsi pengaman agar jika tombol ESC ditekan, tirai tetap bisa menutup balik
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                window.parent.tutupGerbang();
+                if(window.parent && typeof window.parent.tutupGerbang === 'function') {
+                    window.parent.tutupGerbang();
+                }
             }
         });
     </script>
